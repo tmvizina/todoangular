@@ -1,0 +1,51 @@
+<head>
+  <script src="https://kit.fontawesome.com/85f1d2bcb4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  
+<h1 class="center">The Task to do list</h1>
+
+<table class="center">
+<div  *ngFor="let task of toDoList; index as i">
+  
+
+  <div *ngIf="task.complete===false">
+  <td>{{task.name}}: {{task.complete}}</td> <button class="btn" (click)="removeTask(i)">×</button>
+  
+  </div>
+
+  <div  *ngIf="task.complete===true">
+    <td class="completed">{{task.name}}: {{task.complete}}</td> <button class="btn" (click)="removeTask(i)">×</button>
+  </div>
+
+  <div *ngIf="task.complete===false">
+   
+    
+    <!--I did my best to get this button to load in but it simply doesn't work it changes the button to something but it cannot load
+    it in from the website. It has no instructions in how to do this-->
+  <button class="btn"  (click)="completeTask(i)"><span class="fas fa-user-check"></span></button>
+  
+  </div>
+  <form #editTaskForm="ngForm" (ngSubmit)="editTask(i,editTaskForm)">
+    <input type="text" placeholder="Enter New Name Here" id="name" name="name" ngModel />
+    <input type="submit" value="Edit Task">
+    </form>
+
+</div>
+</table>
+
+<!-- <div *ngFor="let task of toDoList">
+
+<div *ngIf="task.complete===false">
+  alltrue=true;
+  <div *ngIf="task.complete===try"
+</div> -->
+<div class="center">
+<p>Add new Task</p>
+<form #addTaskForm="ngForm" (ngSubmit)="addTask(addTaskForm)">
+<input type="text" placeholder="Enter Name" id="name" name="name" ngModel />
+<input type="submit" value="Add Task">
+</form>
+</div>
+</body>
